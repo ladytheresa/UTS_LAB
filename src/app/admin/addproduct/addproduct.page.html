@@ -1,0 +1,201 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add New Product</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <div class="ion-padding">
+      <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
+        <ion-list>        
+          <ion-item>
+            <ion-label>Type</ion-label>
+            <ion-select id="type" [(ngModel)]="type" name="type" placeholder="Product Type" #typeCtrl="ngModel" required>
+              <ion-select-option value="CPU">CPU</ion-select-option>
+              <ion-select-option value="Motherboard">Motherboard</ion-select-option>
+              <ion-select-option value="GPU">GPU</ion-select-option>
+              <ion-select-option value="RAM">RAM</ion-select-option>
+            </ion-select>
+    
+          </ion-item>
+          <ion-item *ngIf="!typeCtrl.valid && typeCtrl.touched">
+            <ion-text color="danger">Type is required</ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Brand</ion-label>
+            <ion-input type="text" required [(ngModel)]="data.name" name="name" #nameCtrl="ngModel"></ion-input>
+          </ion-item>
+  
+          <ion-item *ngIf="!nameCtrl.valid && nameCtrl.touched">
+            <ion-text color="danger">Brand is required</ion-text>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label position="floating">Model</ion-label>
+            <ion-input type="text" required [(ngModel)]="data.model"  name="model" #modelCtrl="ngModel" ></ion-input>
+          </ion-item>
+  
+          <ion-item *ngIf="!modelCtrl.valid && modelCtrl.touched">
+            <ion-text color="danger">Model is not valid</ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Image URL</ion-label>
+            <ion-input type="text" required [(ngModel)]="data.imageUrl" name="imageUrl" #imageUrlCtrl="ngModel"></ion-input>
+          </ion-item>
+  
+          <ion-item *ngIf="!imageUrlCtrl.valid && imageUrlCtrl.touched">
+            <ion-text color="danger">
+              Image URL is not valid</ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Price</ion-label>
+            <ion-input type="number" required [(ngModel)]="data.price" name="price" #priceCtrl="ngModel"></ion-input>
+          </ion-item>
+  
+          <ion-item *ngIf="!priceCtrl.valid && priceCtrl.touched">
+            <ion-text color="danger">
+              Price is not valid</ion-text>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Stock</ion-label>
+            <ion-input type="number" required [(ngModel)]="data.stock" name="stock" #stockCtrl="ngModel"></ion-input>
+          </ion-item>
+  
+          <ion-item *ngIf="!stockCtrl.valid && stockCtrl.touched">
+            <ion-text color="danger">
+              Price is not valid</ion-text>
+          </ion-item>
+
+          <div *ngIf="type === 'CPU'">
+            <ion-item>
+              <ion-label position="floating">Base Clock</ion-label>
+              <ion-input type="text" required [(ngModel)]="data.baseclock" name="baseclock" #baseclockCtrl="ngModel"></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!baseclockCtrl.valid && baseclockCtrl.touched">
+              <ion-text color="danger">
+                Base Clock is not valid</ion-text>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Boost Clock</ion-label>
+              <ion-input type="text" required [(ngModel)]="data.boostclock" name="boostclock" #boostclockCtrl="ngModel"></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!boostclockCtrl.valid && boostclockCtrl.touched">
+              <ion-text color="danger">
+                Boost Clock is not valid</ion-text>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Core</ion-label>
+              <ion-input type="number" required [(ngModel)]="data.core" name="core" #coreCtrl="ngModel"></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!coreCtrl.valid && coreCtrl.touched">
+              <ion-text color="danger">
+                Core is not valid</ion-text>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label position="floating">Thread</ion-label>
+              <ion-input type="number" required [(ngModel)]="data.thread" name="thread" #threadCtrl="ngModel"></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!threadCtrl.valid && threadCtrl.touched">
+              <ion-text color="danger">
+                Thread is not valid</ion-text>
+            </ion-item>
+    
+            <ion-input type="text" [(ngModel)]="data.chipset" name="chipset" value="" [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.brand" name="brand" value="" [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.speed" name="speed" value=null [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.size" name="size" value=null [hidden]="true"></ion-input>
+
+          </div>
+          <div *ngIf="type === 'Motherboard'">
+
+            <ion-item>
+              <ion-label position="floating">Processor Brand</ion-label>
+              <ion-input type="text" required [(ngModel)]="data.brand" name="brand" #brandCtrl="ngModel"></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!brandCtrl.valid && brandCtrl.touched">
+              <ion-text color="danger">Processor Brand is required</ion-text>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="floating">Chipset</ion-label>
+              <ion-input type="text" required [(ngModel)]="data.chipset"  name="chipset" #chipsetCtrl="ngModel" ></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!chipsetCtrl.valid && chipsetCtrl.touched">
+              <ion-text color="danger">Chipset is not valid</ion-text>
+            </ion-item>
+  
+  
+            <ion-input type="text" [(ngModel)]="data.baseclock" name="baseclock" value="" [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.boostclock" name="boostclock" value="" [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.core" name="core" value=null [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.thread" name="thread" value=null [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.speed" name="speed" value=null [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.size" name="size" value=null [hidden]="true"></ion-input>
+
+          </div>
+          
+          <div *ngIf="type === 'RAM'">
+            <ion-item>
+              <ion-label position="floating">Speed</ion-label>
+              <ion-input type="number" required [(ngModel)]="data.speed" name="speed" #speedCtrl="ngModel"></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!speedCtrl.valid && speedCtrl.touched">
+              <ion-text color="danger">
+                Speed is not valid</ion-text>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label position="floating">Size</ion-label>
+              <ion-input type="number" required [(ngModel)]="data.size" name="size" #sizeCtrl="ngModel"></ion-input>
+            </ion-item>
+    
+            <ion-item *ngIf="!sizeCtrl.valid && sizeCtrl.touched">
+              <ion-text color="danger">
+                Size is not valid</ion-text>
+            </ion-item>
+
+            <ion-input type="text" [(ngModel)]="data.baseclock" name="baseclock" value="" [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.boostclock" name="boostclock" value="" [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.core" name="core" value=null [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.thread" name="thread" value=null [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.chipset" name="chipset" value="" [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.brand" name="brand" value="" [hidden]="true"></ion-input>
+
+          </div>
+          <div *ngIf="type === 'GPU'">
+            <ion-input type="text" [(ngModel)]="data.baseclock" name="baseclock" value="" [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.boostclock" name="boostclock" value="" [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.core" name="core" value=null [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.thread" name="thread" value=null [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.chipset" name="chipset" value="" [hidden]="true"></ion-input>
+            <ion-input type="text" [(ngModel)]="data.brand" name="brand" value="" [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.speed" name="speed" value=null [hidden]="true"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.size" name="size" value=null [hidden]="true"></ion-input>
+          </div>
+
+  
+          <ion-item class="ion-float-right" lines="none">
+            <ion-button type="submit" size="small" [disabled]="!f.valid">Submit</ion-button>
+          </ion-item>
+        </ion-list>
+      </form>
+    </div>
+  
+</ion-content>

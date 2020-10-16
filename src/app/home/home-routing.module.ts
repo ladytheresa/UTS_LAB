@@ -6,7 +6,13 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    
+  },
+  {
+    path: ':id',
+    loadChildren: () => import('./item-detail/item-detail.module').then( m => m.ItemDetailPageModule)
   }
+
 ];
 
 @NgModule({

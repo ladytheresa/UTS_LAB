@@ -1,20 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="sideMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="toggle()">
+        <ion-icon 
+            [name]="visible ? 'grid-outline' :'list-outline'">
+        </ion-icon>
+     </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <h1>Products</h1>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<div *ngIf="visible">
+  <ion-list *ngFor="let currentitem of item;">  
+      <ion-item  *ngIf="currentitem.stock!=0" [routerLink]="['./',currentitem.id]" >
+        <ion-thumbnail slot="start">
+          <ion-img [src]="currentitem.imageUrl"></ion-img>
+        </ion-thumbnail>
+       {{currentitem.name}} {{currentitem.model}} <br>
+        Price: Rp {{currentitem.price}} <br>
+        Stock: {{currentitem.stock}}
+      </ion-item>
+  </ion-list>
+  
+</div>
+
+  
+<div *ngIf="!visible">
+  
+  <ion-grid>
+    <ion-row style="margin-left: 35px;margin-right: 35px;">
+      <ion-col size="6" *ngFor="let currentitem of item" [routerLink]="['./',currentitem.id]" style="margin-top: 10px;margin-bottom: 10px;">
+        <ion-card  *ngIf="currentitem.stock!=0" style="height:100%">
+            <ion-img [src]="currentitem.imageUrl"></ion-img>
+            <ion-card-header>
+              <ion-card-title>{{currentitem.name}} {{currentitem.model}}<br>
+              Price: Rp {{currentitem.price}}
+            <br>Stock: {{currentitem.stock}} </ion-card-title>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+</div>
 </ion-content>

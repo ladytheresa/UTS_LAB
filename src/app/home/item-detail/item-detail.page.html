@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Item Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<ion-card>
+    <img [src]="loadedItem.imageUrl" />
+    <ion-card-header>
+      <ion-card-title>Product Information</ion-card-title>
+      <ion-card-subtitle>Type: {{loadedItem.type}}<br>
+        Brand: {{loadedItem.name}}<br>
+        Model: {{loadedItem.model}}<br>
+        Price: {{loadedItem.price}}<br>
+        Stock: {{loadedItem.stock}}<br>
+        <div *ngIf="loadedItem.type == 'CPU'">
+          <ion-card-title>Product Details</ion-card-title>
+          Base Clock: {{loadedItem.baseclock}}<br>
+          Boost Clock: {{loadedItem.boostclock}}<br>
+          Core: {{loadedItem.core}}<br>
+          Thread: {{loadedItem.thread}}<br>
+        </div>
+        <div *ngIf="loadedItem.type == 'Motherboard'">
+          <ion-card-title>Product Details</ion-card-title>
+          Chipset: {{loadedItem.chipset}}<br>
+          Brand Processor: {{loadedItem.brand}}<br>
+        </div>
+        <div *ngIf="loadedItem.type == 'RAM'">
+          <ion-card-title>Product Details</ion-card-title>
+          Speed: {{loadedItem.speed}}<br>
+          Size: {{loadedItem.size}}<br>
+        </div>
+
+      </ion-card-subtitle>
+      </ion-card-header>
+  </ion-card>
+</ion-content>
