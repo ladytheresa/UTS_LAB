@@ -46,56 +46,56 @@ export class EditproductComponent implements OnInit {
     console.log(this.id);
     
     this.form = new FormGroup({
-    type: new FormControl('', {
-      updateOn: "submit",
+    type: new FormControl(this.loadedItem.type, {
+      updateOn: 'submit',
       validators: [Validators.required]
     }),
     name: new FormControl('', {
-      updateOn: "submit",
+      updateOn: 'submit',
       validators: [Validators.required]
     }),
     model: new FormControl('', {
-      updateOn: "submit",
+      updateOn: 'submit',
       validators: [Validators.required]
     }),
-    id: new FormControl('', {
-      updateOn: "submit"
+    id: new FormControl(this.loadedItem.id, {
+      updateOn: 'submit'
     }),
     price: new FormControl(null, {
-      updateOn: "submit",
+      updateOn: 'submit',
       validators: [Validators.required]
     }),
     imageUrl: new FormControl('', {
-      updateOn: "submit",
+      updateOn: 'submit',
       validators: [Validators.required]
     }), 
     stock: new FormControl(null, {
-      updateOn: "submit",
+      updateOn: 'submit',
       validators: [Validators.required]
     }),
     chipset: new FormControl('', {
-      updateOn: "submit"
+      updateOn: 'submit'
     }),
     brand: new FormControl('', {
-      updateOn: "submit"
+      updateOn: 'submit'
     }),
     baseclock: new FormControl('', {
-      updateOn: "submit"
+      updateOn: 'submit'
     }),
     boostclock: new FormControl('', {
-      updateOn: "submit"
+      updateOn: 'submit'
     }),
     core: new FormControl(null, {
-      updateOn: "submit",
+      updateOn: 'submit'
     }),
     thread: new FormControl(null, {
-      updateOn: "submit"
+      updateOn: 'submit'
     }),
     speed: new FormControl(null, {
-      updateOn: "submit"
+      updateOn: 'submit'
     }),
     size: new FormControl(null, {
-      updateOn: "submit"
+      updateOn: 'submit'
     })
   })
   ;}
